@@ -1,0 +1,275 @@
+.production-program {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  gap: 20px;
+  padding: 30px;
+  height: 100vh;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+
+  &__task-list,
+  &__status,
+  &__notifications {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+
+    h2 {
+      font-size: 22px;
+      color: #6c3ac5;
+      margin-bottom: 15px;
+      font-family: 'Roboto', sans-serif;
+      letter-spacing: 1px;
+      line-height: 1.2;
+    }
+  }
+
+  &__status {
+    justify-content: center;
+    padding-top: 20px;
+  }
+
+  &__task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  &__month-filter {
+    margin-left: 20px;
+
+    select {
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+  }
+
+  &__task-table-container {
+    max-height: calc(100vh - 150px);
+    overflow-x: auto;
+    overflow-y: auto;
+  }
+
+  &__task-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f4f4f4;
+      color: #333;
+      font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+  }
+
+  &__task-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+
+    &--completed {
+      background-color: #28a745;
+      color: white;
+    }
+
+    &--pending {
+      background-color: #ffc107;
+      color: white;
+    }
+
+    input[type="checkbox"] {
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border: 2px solid #6c3ac5;
+      border-radius: 4px;
+      cursor: pointer;
+      position: relative;
+
+      &:checked {
+        background-color: #6c3ac5;
+        border-color: #6c3ac5;
+
+        &::after {
+          content: "✔";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          color: white;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
+  &__status-text {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &--completed {
+      background-color: #28a745;
+      color: white;
+    }
+
+    &--pending {
+      background-color: #ffc107;
+      color: black;
+    }
+
+    &--total {
+      background-color: #007bff;
+      color: white;
+    }
+  }
+
+  &__notifications {
+    grid-column: 1 / -1;
+    height: auto;
+    min-height: 200px;
+  }
+
+  &__status-bar {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    padding: 15px;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+
+        .production-program__icon {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .production-program {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 15px;
+    height: auto;
+
+    &__task-list,
+    &__status,
+    &__notifications {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    &__task-header {
+      width: 100%;
+    }
+
+    &__month-filter {
+      margin-left: 10px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .production-program {
+    padding: 10px;
+
+    &__task-list,
+    &__status,
+    &__notifications {
+      padding: 15px;
+    }
+
+    &__task-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    &__month-filter {
+      margin-left: 0;
+      margin-top: 10px;
+    }
+
+    &__task-table {
+      font-size: 14px;
+
+      th,
+      td {
+        padding: 6px;
+      }
+    }
+
+    &__status-text {
+      font-size: 14px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .production-program {
+    &__task-table {
+      font-size: 12px;
+
+      th,
+      td {
+        padding: 4px;
+      }
+    }
+
+    &__status-text {
+      font-size: 12px;
+    }
+
+    &__notifications {
+      min-height: 150px;
+    }
+  }
+}

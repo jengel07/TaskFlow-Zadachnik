@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Отключаем горизонтальную прокрутку */
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Для обеспечения 100% высоты экрана */
+    min-height: 100vh; /* Дополнительная защита от проблем с мобильными устройствами */
+
+    &__content {
+        flex: 1;
+        padding: 20px;
+        background-color: #f4f5f7;
+        overflow-y: auto;
+    }
+}
